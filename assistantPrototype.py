@@ -18,7 +18,7 @@ class test(cmd.Cmd):
         :return: The current weather at a location L
         """
 
-        temp = weath.get_weather(KEY, line)
+        temp = weath.get_weather(weath.KEY, line)
         weath.printWeather(temp, weath.weather_dict, line)
 
     def do_open(self, line):
