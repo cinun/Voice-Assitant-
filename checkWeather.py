@@ -2,6 +2,8 @@ import requests, json
 from sys import argv
 
 
+#Declaring Constants
+KEY = "e0b1a3f7e2a349c5da6ae97ed5cdbd74"
 weather_dict = {"Rain":"Rainy", "Clouds":"Cloudy", "Clear":"Sunny & Clear", "Sand":"Sand Stormy ","Drizzle":"Drizzling"}
 
 def get_weather(KEY, location):
