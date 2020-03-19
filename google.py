@@ -4,7 +4,7 @@ import os
 from google.cloud import texttospeech
 from pygame import mixer
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'C:/Users/Yathartha/Documents/codes/myenv/project/files/My First Project-1cc2e314e6fa.json'
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "Google Cloud Credential here"
 
 def playSound(sound):
     mixer.init()
@@ -18,29 +18,28 @@ def mainSpeech(textInput, file_name):
     # Set the text input to be synthesized
     synthesis_input = texttospeech.types.SynthesisInput(text=textInput)
 
-    # Build the voice request, select the language code ("en-US")
+    # select the language code ("en-US")
     # ****** the NAME
-    # and the ssml voice gender ("neutral")
+    # and the ssml voice gender ("FEMALE")
     voice = texttospeech.types.VoiceSelectionParams(
-        language_code='en-US',
-        name='en-US-Wavenet-F',
-        ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE)
+            language_code='en-US',
+            name='en-US-Wavenet-F',
+            ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE)
 
     # Select the type of audio file you want returned
     audio_config = texttospeech.types.AudioConfig(
-        audio_encoding=texttospeech.enums.AudioEncoding.MP3)
+                   audio_encoding=texttospeech.enums.AudioEncoding.MP3)
 
     # Perform the text-to-speech request on the text input with the selected
     # voice parameters and audio file type
     response = client.synthesize_speech(synthesis_input, voice, audio_config)
     #response.speak()
-    # The response's audio_content is binary.
+    
     with open(file_name, 'wb') as out:
         # Write the response to the output file.
         out.write(response.audio_content)
-        #print('Audio content written to file "output.mp3"')
+        
 
 
 
-#mainSpeech("My name is yathartha regmi")
-#playSound()
+
